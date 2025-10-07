@@ -1,0 +1,15 @@
+# Copilot Instructions for BijouxReact
+
+## Contexte du projet
+Ce projet est une API ASP.NET Core minimaliste pour gérer une boutique de bijoux. Le but est d'avoir plusieurs produits que le clients puisse consulter et potentiellement acheté en ajoutant à un panier. Le paiement se fait avec stripes. 
+Il va donc nous falloir une gestion de clients, de stocks etc. 
+A savoir qu'on peut commander sans avoir créer un compte, mais il faut quand même avoir des données pour le paiement et la livraison. 
+Il a plusieurs catégories de bijoux, plusieurs articles dans chaque catégories, et sur chaque articles plusieurs variantes. Possibilité de rajouté un gravure qui est pas une obligatoire mais un plus payant.
+Le site possède également une page administrateur où il aura accès au différents stocks en temps réel, le CA fait sur le mois, les livraison en cours et terminé ansi qu'une page pour réapprovisioner les stocks et la livraison du réapprovisionnement, ça veut dire une liste de fournisseur et avoir accès au livraison. 
+ 
+
+## Instructions spécifiques
+Je veux que ce projet soit fait avec injection de dépendance.
+Et une bonne convention de nommage 
+On utilise SQL serveur
+Le language c'est du React et C#
