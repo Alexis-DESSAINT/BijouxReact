@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "aTmsSv++05SOsoDvxZvI2k/VMqGmn4n58LIRxMGjU2U=",
+  "Hash": "uumZnD8iGSk9u53pF8uDHQwg5rf+OvOv7/ITPcgg9e0=",
   "Source": "BijouxShop.Api",
   "BasePath": "_content/BijouxShop.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BijouxShop.Api\\wwwroot",
+      "Source": "BijouxShop.Api",
+      "ContentRoot": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\",
+      "BasePath": "_content/BijouxShop.Api",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

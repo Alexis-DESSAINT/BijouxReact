@@ -168,3 +168,4 @@ C:\Users\Utilisateur\Documents\DEV\BijouxReact\BijouxShop.Api\obj\Debug\net8.0\r
 C:\Users\Utilisateur\Documents\DEV\BijouxReact\BijouxShop.Api\obj\Debug\net8.0\BijouxShop.Api.pdb
 C:\Users\Utilisateur\Documents\DEV\BijouxReact\BijouxShop.Api\obj\Debug\net8.0\BijouxShop.Api.genruntimeconfig.cache
 C:\Users\Utilisateur\Documents\DEV\BijouxReact\BijouxShop.Api\obj\Debug\net8.0\ref\BijouxShop.Api.dll
+C:\Users\Utilisateur\Documents\DEV\BijouxReact\BijouxShop.Api\bin\Debug\net8.0\BijouxShop.Api.staticwebassets.runtime.json

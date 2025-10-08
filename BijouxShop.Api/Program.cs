@@ -40,6 +40,10 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
+app.MapGet("/api/products", async (BijouxShopContext db) =>
+    await db.Articles.ToListAsync()
+);
+
 app.MapPost("/variantes/{id}/image", async (int id, IFormFile file, BijouxShopContext db, IWebHostEnvironment env) =>
 {
     var variante = await db.Variantes.FindAsync(id);
