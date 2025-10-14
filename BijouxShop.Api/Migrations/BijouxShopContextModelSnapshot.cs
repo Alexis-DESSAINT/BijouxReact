@@ -327,12 +327,10 @@ namespace BijouxShop.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
 
                     b.ToTable("Paniers");
                 });
@@ -345,10 +343,7 @@ namespace BijouxShop.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("GravureId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PanierId")
+                    b.Property<int>("PanierId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantite")
@@ -358,8 +353,6 @@ namespace BijouxShop.Api.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GravureId");
 
                     b.HasIndex("PanierId");
 
@@ -383,7 +376,6 @@ namespace BijouxShop.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Prix")
@@ -488,32 +480,21 @@ namespace BijouxShop.Api.Migrations
                     b.Navigation("Commande");
                 });
 
-            modelBuilder.Entity("BijouxShop.Api.Models.Panier", b =>
-                {
-                    b.HasOne("BijouxShop.Api.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
-
-                    b.Navigation("Client");
-                });
-
             modelBuilder.Entity("BijouxShop.Api.Models.PanierItem", b =>
                 {
-                    b.HasOne("BijouxShop.Api.Models.Gravure", "Gravure")
-                        .WithMany()
-                        .HasForeignKey("GravureId");
-
-                    b.HasOne("BijouxShop.Api.Models.Panier", null)
-                        .WithMany("Items")
-                        .HasForeignKey("PanierId");
+                    b.HasOne("BijouxShop.Api.Models.Panier", "Panier")
+                        .WithMany("PanierItems")
+                        .HasForeignKey("PanierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BijouxShop.Api.Models.Variante", "Variante")
-                        .WithMany()
+                        .WithMany("PanierItems")
                         .HasForeignKey("VarianteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Gravure");
+                    b.Navigation("Panier");
 
                     b.Navigation("Variante");
                 });
@@ -565,7 +546,12 @@ namespace BijouxShop.Api.Migrations
 
             modelBuilder.Entity("BijouxShop.Api.Models.Panier", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("PanierItems");
+                });
+
+            modelBuilder.Entity("BijouxShop.Api.Models.Variante", b =>
+                {
+                    b.Navigation("PanierItems");
                 });
 #pragma warning restore 612, 618
         }

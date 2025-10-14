@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.css';
 
-const initialCart = [
-  {
-    id: 1,
-    name: "Bague Éternité Diamant",
-    variant: "Or Blanc 18k",
-    price: 2499,
-    quantity: 1,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=100"
-  },
-  {
-    id: 2,
-    name: "Bracelet Or Rose",
-    variant: "Taille S",
-    price: 899,
-    quantity: 2,
-    image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=100"
-  }
-];
-
 const CartPage = () => {
-  const [cart, setCart] = useState(initialCart);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5105/api/cart')
+      .then(res => res.json())
+      .then(data => {
+        // On adapte les données API au format attendu par le visuel existant
+        const items = (data.items || []).map(item => ({
+          id: item.id,
+          name: item.variante.articleNom,
+          variant: item.variante.nom,
+          price: item.variante.prix,
+          quantity: item.quantite,
+          image: item.variante.imageUrl
+            ? `http://localhost:5105${item.variante.imageUrl}`
+            : 'https://via.placeholder.com/100'
+        }));
+        setCart(items);
+      });
+  }, []);
 
   const handleQuantity = (id, delta) => {
     setCart(cart =>
@@ -31,9 +31,11 @@ const CartPage = () => {
           : item
       )
     );
+    // TODO: Appeler l'API pour mettre à jour la quantité côté serveur si besoin
   };
 
-  const handleRemove = id => {
+  const handleRemove = async id => {
+    await fetch(`http://localhost:5105/api/cart/remove/${id}`, { method: 'DELETE' });
     setCart(cart => cart.filter(item => item.id !== id));
   };
 

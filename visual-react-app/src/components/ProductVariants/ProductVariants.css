@@ -1,101 +1,80 @@
 .product-variants {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
-.product-variants h3 {
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+.variant-cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.variants-list {
+.variant-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  background: #fafbfc;
+  padding: 1rem 1.2rem;
+  min-width: 180px;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.variant-card.selected {
+  border: 2px solid #007bff;
+  background: #e6f0ff;
+  box-shadow: 0 4px 16px rgba(0,123,255,0.08);
+}
+
+.variant-card-main {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
-.variant-option {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  border: 2px solid var(--border-color);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-
-.variant-option:hover:not(.out-of-stock) {
-  border-color: var(--accent-color);
-  transform: translateX(5px);
-}
-
-.variant-option.selected {
-  border-color: var(--accent-color);
-  background-color: rgba(212, 175, 55, 0.1);
-}
-
-.variant-option.out-of-stock {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.variant-preview {
+.variant-img img {
   width: 60px;
   height: 60px;
-  margin-right: 1rem;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.variant-preview img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
 }
 
 .variant-details {
-  flex: 1;
-}
-
-.variant-details h4 {
-  margin-bottom: 0.25rem;
-  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .variant-price {
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 0.25rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.variant-info {
+  font-size: 0.95em;
+  color: #444;
 }
 
 .variant-stock {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 0.9em;
+  margin-top: 0.2em;
 }
 
-.selected-indicator {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 25px;
-  height: 25px;
-  background-color: var(--accent-color);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: bold;
+.variant-stock.in-stock {
+  color: #28a745;
 }
 
-@media (max-width: 768px) {
-  .variant-option {
-    padding: 0.75rem;
-  }
+.variant-stock.out-stock {
+  color: #dc3545;
+}
 
-  .variant-preview {
-    width: 50px;
-    height: 50px;
-  }
+.variant-select-btn {
+  margin-top: 0.7rem;
+  font-size: 0.95em;
+  color: #007bff;
+  font-weight: 500;
 }

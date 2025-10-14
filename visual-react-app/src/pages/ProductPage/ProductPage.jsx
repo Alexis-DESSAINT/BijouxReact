@@ -34,8 +34,16 @@ const ProductPage = () => {
 
   const currentVariant = product.variantes[selectedVariant];
 
-  const handleAddToCart = () => {
-    alert(`Ajouté au panier: ${quantity}x ${product.nom} - ${currentVariant.nom}`);
+  const handleAddToCart = async () => {
+    await fetch('http://localhost:5105/api/cart/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        varianteId: product.variantes[selectedVariant].id,
+        quantite: quantity
+      })
+    });
+    // Optionnel : afficher une notification ou rediriger
   };
 
   return (

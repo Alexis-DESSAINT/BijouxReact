@@ -68,6 +68,7 @@ public class ProductsController : ControllerBase
             .Select(v => new
             {
                 v.Id,
+                v.Nom,
                 v.Prix,
                 v.ImageUrl,
                 v.Stock

@@ -1,15 +1,61 @@
 # Copilot Instructions for BijouxReact
 
-## Contexte du projet
-Ce projet est une API ASP.NET Core minimaliste pour gérer une boutique de bijoux. Le but est d'avoir plusieurs produits que le clients puisse consulter et potentiellement acheté en ajoutant à un panier. Le paiement se fait avec stripes. 
-Il va donc nous falloir une gestion de clients, de stocks etc. 
-A savoir qu'on peut commander sans avoir créer un compte, mais il faut quand même avoir des données pour le paiement et la livraison. 
-Il a plusieurs catégories de bijoux, plusieurs articles dans chaque catégories, et sur chaque articles plusieurs variantes. Possibilité de rajouté un gravure qui est pas une obligatoire mais un plus payant.
-Le site possède également une page administrateur où il aura accès au différents stocks en temps réel, le CA fait sur le mois, les livraison en cours et terminé ansi qu'une page pour réapprovisioner les stocks et la livraison du réapprovisionnement, ça veut dire une liste de fournisseur et avoir accès au livraison. 
- 
-
 ## Instructions spécifiques
 Je veux que ce projet soit fait avec injection de dépendance.
 Et une bonne convention de nommage 
 On utilise SQL serveur
 Le language c'est du React et C#
+
+## Contexte du projet
+Ce projet est une API ASP.NET Core minimaliste pour gérer une boutique de bijoux.
+Le site est en deux partie. 
+- Il y a d'abord la partie administrateur. Lors de la connexion sur le site, si les identifiants indique que l'utilisateur à le rôle Admin alors il faut qu'à ce moment là l'utilisateur arrive sur une page de gestion.
+  Dans cette partie administration, l'admin arrivera sur une page d'accueil, où l'on pourra voir les dernières ventes effectués, le CA du mois en cours, les prochaines livraisons prévu etc (une sorte de previz).
+  Il y aura également un menu où dedans il y aura: - Gestions des stocks
+                                                   - CA
+                                                   - Ventes
+                                                   - Livraison
+                                                   - Réapprovisionnement
+  Celà permettra au administrateur d'avoir un regard et un contrôle total sur toute la gestion de l'entreprise. Il faut également qu'à chaque fois qu'ils font une actions dans le sens passé une commande à un fournisseur, on notifie bien quel Admin là fait. 
+- Il y aura également la partie Client. Quand quelqu'un arrive sur la page principal, il faut que cette page lui donne envie, donc on affichera l'entreprise, quelques petits infos dessus, les différentes catégories, les produits vedettes, et un peu d'histoire de l'entreprise.
+  Dans la navbar, il aura accès soit à l'accueil (page principal), au différentes catégories, et au news de l'entreprise. Il y aura également le panier et le bouton de connexion.
+  Lorsqu'il choisira la catégories, ça affichera les produits en rapport avec la bonne catégorie. Et quand on clique sur un article ça renvoie directement sur la bonne page produit. 
+  Dans la page produit, on aura le details du produits avec les différentes variantes lié à ce produit. Il a également un bouton qui permettra de chosir la quantité désiré et d'ajouté l'article au panier.
+  Dans ce panier on retrouvera les articles ajoutés, le prix total, et un bouton pour validé la commande. Après avoir validé la commande, on va soit demandé au client de s'indentifier/créer un compte ou alors de continuer sans se connecter:
+  - Si il choisi de se connecter la page de connexion apparaitra il se connectera et renverra directement à la page de récap de ses informations pour la livraison. Il y aura également un bouton pour modifier l'adresse de livraison 
+    si jamais on veut modifier l'adresse pour cette commande. Lorsque tout est validé, on passe au paiement de la commande. Après la validation du paiement, la commande est donc validé. 
+  - Si il décide de créer un compte, ça l'envoi alors sur la page de création de compte. Une fois le compte créer toutes les données sont alors envoyé dans la base de données de clients, et il passe directement à la page de récap de ses infos puis suis le même processus que les clients qui ont un compte.
+  - Si il décide de continuer sans se connecter, alors dans ce cas il arrivera sur une page ou il devra rentrer toutes les informations de livraison et la livraison sera associé à aucun client. Mais après avoir rentré toute ses infos
+    il arrivera également sur la page de récap puis après ça suit le même procéder que les autres.
+A chaque passage de commande, un mail sera envoyé à l'adresse mail rentré pour confirmé la commande avec le numéro de commande et le suivi de livraison.
+Pour chaque commande, il y aura une page qui permet de voir l'avancée de la commande, avec son statut etc. 
+Les clients connectés auront également accès au commande passé ultérieurement avec la date etc. 
+
+Une fois la commande passé, elle arrivera dans la bdd et à ce moment là les admins pourront la voir et s'en occuper.
+  
+
+ 
+## Base de données (vue d'ensemble)
+
+Architecture de la base de données
+Categorie (Id, Nom, Description)
+Article (Id, Nom, Description, CategorieId)
+Variante (Id, ArticleId, Prix, Stock, ImageUrl, ...)
+Gravure (Id, Texte, Prix, CommandeItemId)
+Client (Id, Nom, Prenom, Email, Adresse, ...)
+Panier (Id, ClientId, DateCreation)
+PanierItem (Id, PanierId, VarianteId, Quantite, GravureId)
+Commande (Id, ClientId, DateCommande, Statut, Total, AdresseLivraison, AdresseFacturation)
+CommandeItem (Id, CommandeId, VarianteId, Quantite, PrixUnitaire, GravureId)
+Paiement (Id, CommandeId, DatePaiement, Montant, Statut, StripePaymentId)
+Livraison (Id, CommandeId, DateExpedition, DateLivraison, Statut)
+Fournisseur (Id, Nom, Contact, Email, Telephone)
+ApprovisionnementItem (Id, FournisseurId, VarianteId, Quantite, DateApprovisionnement, Statut)
+LivraisonApprovisionnement (Id, ApprovisionnementItemId, DateLivraison, Statut)
+
+Relations principales
+Un article appartient à une catégorie, a plusieurs variantes.
+Un client peut avoir plusieurs paniers et commandes.
+Une commande contient plusieurs items, chaque item référence une variante (et éventuellement une gravure).
+Paiement et livraison sont liés à une commande.
+Gestion des stocks et réapprovisionnement via fournisseurs et approvisionnements.
