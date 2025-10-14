@@ -3,10 +3,18 @@
 }
 
 .product-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.product-images {
+  flex: 1 1 0;
+  max-width: 400px;
+}
+
+.product-info {
+  flex: 2 1 0;
 }
 
 .product-images {
@@ -16,11 +24,12 @@
 }
 
 .main-image {
-  width: 100%;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: var(--shadow);
+  margin: 0 auto;
 }
 
 .main-image img {

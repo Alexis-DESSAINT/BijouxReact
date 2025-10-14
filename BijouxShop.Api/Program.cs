@@ -3,25 +3,40 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Add services to the container - TOUT DOIT ÊTRE ICI AVANT builder.Build()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers(); // <- Déplacé ici
+
+// CORS pour permettre les appels depuis React
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddDbContext<BijouxShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseStaticFiles();
 app.UseHttpsRedirection();
+app.UseCors("ReactApp"); // <- Ajouté pour React
+app.UseAuthorization();
 
+// Minimal API endpoints
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -39,10 +54,6 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
-
-app.MapGet("/api/products", async (BijouxShopContext db) =>
-    await db.Articles.ToListAsync()
-);
 
 app.MapPost("/variantes/{id}/image", async (int id, IFormFile file, BijouxShopContext db, IWebHostEnvironment env) =>
 {
@@ -66,8 +77,11 @@ app.MapPost("/variantes/{id}/image", async (int id, IFormFile file, BijouxShopCo
     return Results.Ok(new { variante.Id, variante.ImageUrl });
 })
 .Accepts<IFormFile>("multipart/form-data")
-.WithName("GetWeatherForecast")
+.WithName("UploadVarianteImage") // <- Nom corrigé
 .WithOpenApi();
+
+// Map controllers - maintenant après var app = builder.Build()
+app.MapControllers();
 
 app.Run();
 

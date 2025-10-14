@@ -1,0 +1,217 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Argent_Moderne.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Argent_Moderne.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Diamant_Eternel.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Diamant_Eternel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Emeraude_Vintage.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Emeraude_Vintage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Fantaisie_Coloree.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Fantaisie_Coloree.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Or_Elegance.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Or_Elegance.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Perle_Blanche.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Perle_Blanche.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Rubis_Passion.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Rubis_Passion.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bague_Saphir_Royal.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bague_Saphir_Royal.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Anneaux_Acier.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Anneaux_Acier.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Creole_Or.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Creole_Or.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Diamant.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Diamant.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Ethniques.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Ethniques.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Fantaisie_Fleur.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Fantaisie_Fleur.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Pendantes_Argent.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Pendantes_Argent.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Perle_Classique.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Perle_Classique.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Boucle_Puces_Saphir.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Boucle_Puces_Saphir.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Argent_Large.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Argent_Large.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Charms.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Charms.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Cuir_Homme.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Cuir_Homme.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Fantaisie_Colore.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Fantaisie_Colore.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Jonc_Acier.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Jonc_Acier.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Or_Fin.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Or_Fin.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Perles_Naturelles.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Perles_Naturelles.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Bracelet_Tresse.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Bracelet_Tresse.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Coeur_Or.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Coeur_Or.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Fantaisie_Etoile.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Fantaisie_Etoile.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Initial.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Initial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Multi_Rangs.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Multi_Rangs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Perle_blanche.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Perle_blanche.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Pierre_Bleue.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Pierre_Bleue.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Ras_du_Cou.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Ras_du_Cou.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Collier_Sautoir_Argent.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Collier_Sautoir_Argent.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Acier_Classique.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Acier_Classique.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Automatique.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Automatique.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Connecte.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Connecte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Cuir_Vintage.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Cuir_Vintage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Minimaliste.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Minimaliste.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Or_Luxe.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Or_Luxe.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Quartz_Femme.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Quartz_Femme.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Montre_Sport_Chrono.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Montre_Sport_Chrono.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Langue_UV.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Langue_UV.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Levre_Titane.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Levre_Titane.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Nez_Or.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Nez_Or.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Nombril_Strass.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Nombril_Strass.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Septum_Dore.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Septum_Dore.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_Tragus.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_Tragus.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_oreille_acie.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_oreille_acie.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_oreille_acier.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_oreille_acier.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Utilisateur\\Documents\\DEV\\BijouxReact\\BijouxShop.Api\\wwwroot\\images\\variantes\\Percing_sourcil_noir.jpg",
+      "PackagePath": "staticwebassets\\images\\variantes\\Percing_sourcil_noir.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BijouxShop.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BijouxShop.Api.props",
+      "PackagePath": "build\\BijouxShop.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BijouxShop.Api.props",
+      "PackagePath": "buildMultiTargeting\\BijouxShop.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BijouxShop.Api.props",
+      "PackagePath": "buildTransitive\\BijouxShop.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
