@@ -11,4 +11,5 @@ public class Client
     public string CodePostal { get; set; } = null!;
     public string? Telephone { get; set; }
     public ICollection<Commande> Commandes { get; set; } = new List<Commande>();
+    public string? PasswordHash { get; set; } // Ajoute cette ligne
 }

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -13,6 +15,10 @@ const LoginPage = () => {
     } else {
       setMsg("Identifiants incorrects.");
     }
+  };
+
+  const handleSignup = () => {
+    navigate('/signup');
   };
 
   return (
@@ -47,6 +53,14 @@ const LoginPage = () => {
         {msg && <div className="login-msg">{msg}</div>}
         <div className="login-help">
           <a href="#">Mot de passe oublié ?</a>
+        </div>
+        <div className="login-signup-separator">
+          <span>ou</span>
+        </div>
+        <div className="login-signup">
+          <button className="btn btn-outline" onClick={handleSignup}>
+            <span style={{fontWeight: 500}}>Créer un compte</span>
+          </button>
         </div>
       </div>
     </div>

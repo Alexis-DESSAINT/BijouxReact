@@ -8,6 +8,7 @@ import CategoryPage from './pages/CategoryPage/CategoryPage'; // <-- Assure-toi 
 import ArticlesPage from './pages/ArticlesPage/ArticlesPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import CartPage from './pages/CartPage/CartPage';
+import SignupPage from './pages/SignupPage/SignupPage'; // <-- Importer SignupPage
 import './styles/globals.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="articles" element={<ArticlesPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="cart" element={<CartPage onCartChange={setCartCount} />} />
+          <Route path="/signup" element={<SignupPage />} /> {/* <-- Ajout de la route pour SignupPage */}
         </Route>
       </Routes>
     </Router>

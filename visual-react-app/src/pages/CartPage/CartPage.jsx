@@ -88,7 +88,7 @@ const CartPage = ({ onCartChange }) => {
             <div className="cart-total">{total}€</div>
           </div>
           <button className="btn btn-primary cart-checkout" onClick={() => alert('Commande validée !')}>
-            Valider la commande
+            Passer commande
           </button>
         </div>
       )}

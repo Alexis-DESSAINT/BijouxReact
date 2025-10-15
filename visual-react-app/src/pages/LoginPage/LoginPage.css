@@ -68,3 +68,41 @@
   text-decoration: none;
   font-size: 0.95rem;
 }
+
+.login-signup-separator {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0 0.5rem 0;
+  color: var(--border-color);
+  font-size: 0.95rem;
+}
+
+.login-signup-separator span {
+  margin: 0 auto;
+  background: #fff;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.login-signup {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.btn.btn-outline {
+  border: 1.5px solid var(--accent-color);
+  background: transparent;
+  color: var(--accent-color);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.btn.btn-outline:hover {
+  background: var(--accent-color);
+  color: #fff;
+}

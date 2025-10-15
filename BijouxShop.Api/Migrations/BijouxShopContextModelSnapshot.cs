@@ -114,6 +114,9 @@ namespace BijouxShop.Api.Migrations
                     b.Property<string>("Nom")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Prenom")
                         .HasColumnType("nvarchar(max)");
 
