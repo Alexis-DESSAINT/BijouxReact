@@ -3,9 +3,9 @@ import Navbar from '../Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 import './Layout.css';
 
-const Layout = () => (
+const Layout = ({ cartCount }) => (
   <div className="layout">
-    <Navbar />
+    <Navbar cartCount={cartCount} />
     <main className="main-content">
       <Outlet />
     </main>

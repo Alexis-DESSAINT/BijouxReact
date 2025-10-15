@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductVariants from '../../components/ProductVariants/ProductVariants';
+import ModalAlert from '../../components/ModalAlert/ModalAlert';
 import './ProductPage.css';
 
-const ProductPage = () => {
+const ProductPage = ({ onCartChange }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(0);
@@ -11,6 +12,8 @@ const ProductPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertMsg, setAlertMsg] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -35,126 +38,145 @@ const ProductPage = () => {
   const currentVariant = product.variantes[selectedVariant];
 
   const handleAddToCart = async () => {
-    await fetch('http://localhost:5105/api/cart/add', {
+    const variantId = product.variantes[selectedVariant].id;
+
+    const response = await fetch('http://localhost:5105/api/cart/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        varianteId: product.variantes[selectedVariant].id,
+        varianteId: variantId,
         quantite: quantity
       })
     });
-    // Optionnel : afficher une notification ou rediriger
+
+    if (!response.ok) {
+      const error = await response.json();
+      setAlertMsg(error.message || "Erreur lors de l'ajout au panier.");
+      setAlertOpen(true);
+      return;
+    }
+
+    // Ici seulement tu mets à jour la bulle ou le panier
+    fetch('http://localhost:5105/api/cart')
+      .then(res => res.json())
+      .then(data => {
+        const count = (data.items || []).reduce((sum, i) => sum + (i.quantite ?? i.quantity ?? 0), 0);
+        if (onCartChange) onCartChange(count);
+      });
   };
 
   return (
-    <div className="product-page">
-      <div className="container">
-        <div className="product-main">
-          {/* Images du produit */}
-          <div className="product-images">
-            <div className="main-image">
-              <img
-                src={
-                  currentVariant.imageUrl
-                    ? `http://localhost:5105${currentVariant.imageUrl}`
-                    : 'https://via.placeholder.com/600'
-                }
-                alt={product.nom}
-              />
-            </div>
-          </div>
-          <div className="image-thumbnails">
-            {currentVariant.images?.map((image, index) => (
-              <img
-                key={index}
-                src={`http://localhost:5105${image}`}
-                alt={`${product.nom} vue ${index + 1}`}
-                className={currentImageIndex === index ? 'active' : ''}
-                onClick={() => setCurrentImageIndex(index)}
-              />
-            ))}
-          </div>
-          {/* Informations du produit */}
-          <div className="product-info">
-            <div className="product-header">
-              <h1 className="product-title">{product.nom}</h1>
-              <p className="product-brand">{product.marque}</p>
-              <div className="product-price">
-                {currentVariant.prix}€
+    <>
+      <div className="product-page">
+        <div className="container">
+          <div className="product-main">
+            {/* Images du produit */}
+            <div className="product-images">
+              <div className="main-image">
+                <img
+                  src={
+                    currentVariant.imageUrl
+                      ? `http://localhost:5105${currentVariant.imageUrl}`
+                      : 'https://via.placeholder.com/600'
+                  }
+                  alt={product.nom}
+                />
               </div>
             </div>
-
-            <div className="product-description">
-              <p>{product.description}</p>
+            <div className="image-thumbnails">
+              {currentVariant.images?.map((image, index) => (
+                <img
+                  key={index}
+                  src={`http://localhost:5105${image}`}
+                  alt={`${product.nom} vue ${index + 1}`}
+                  className={currentImageIndex === index ? 'active' : ''}
+                  onClick={() => setCurrentImageIndex(index)}
+                />
+              ))}
             </div>
-
-            {/* Sélecteur de variantes */}
-            <ProductVariants
-              variants={product.variantes}
-              selectedVariant={selectedVariant}
-              onVariantChange={setSelectedVariant}
-            />
-
-            {/* Spécifications */}
-            <div className="product-specs">
-              <h3>Spécifications</h3>
-              <ul>
-                {currentVariant.specifications &&
-                  Object.entries(currentVariant.specifications).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {value}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-
-            {/* Quantité et ajout au panier */}
-            <div className="product-actions">
-              <div className="quantity-selector">
-                <label>Quantité:</label>
-                <div className="quantity-controls">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    disabled={quantity <= 1}
-                  >
-                    -
-                  </button>
-                  <span>{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(Math.min(currentVariant.stock, quantity + 1))}
-                    disabled={quantity >= currentVariant.stock}
-                  >
-                    +
-                  </button>
+            {/* Informations du produit */}
+            <div className="product-info">
+              <div className="product-header">
+                <h1 className="product-title">{product.nom}</h1>
+                <p className="product-brand">{product.marque}</p>
+                <div className="product-price">
+                  {currentVariant.prix}€
                 </div>
               </div>
 
-              <div className="action-buttons">
-                <button
-                  className="btn btn-primary add-to-cart"
-                  onClick={handleAddToCart}
-                  disabled={currentVariant.stock === 0}
-                >
-                  {currentVariant.stock > 0 ? 'Ajouter au Panier' : 'Rupture de Stock'}
-                </button>
-                <button className="btn btn-outline">
-                  ♡ Ajouter aux Favoris
-                </button>
+              <div className="product-description">
+                <p>{product.description}</p>
               </div>
 
-              <div className="stock-info">
-                {currentVariant.stock > 0 ? (
-                  <span className="in-stock">✓ En stock ({currentVariant.stock} disponibles)</span>
-                ) : (
-                  <span className="out-of-stock">✗ Rupture de stock</span>
-                )}
+              {/* Sélecteur de variantes */}
+              <ProductVariants
+                variants={product.variantes}
+                selectedVariant={selectedVariant}
+                onVariantChange={setSelectedVariant}
+              />
+
+              {/* Spécifications */}
+              <div className="product-specs">
+                <h3>Spécifications</h3>
+                <ul>
+                  {currentVariant.specifications &&
+                    Object.entries(currentVariant.specifications).map(([key, value]) => (
+                      <li key={key}>
+                        <strong>{key}:</strong> {value}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+
+              {/* Quantité et ajout au panier */}
+              <div className="product-actions">
+                <div className="quantity-selector">
+                  <label>Quantité:</label>
+                  <div className="quantity-controls">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      disabled={quantity <= 1}
+                    >
+                      -
+                    </button>
+                    <span>{quantity}</span>
+                    <button
+                      onClick={() => setQuantity(Math.min(currentVariant.stock, quantity + 1))}
+                      disabled={quantity >= currentVariant.stock}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="action-buttons">
+                  <button
+                    className="btn btn-primary add-to-cart"
+                    onClick={handleAddToCart}
+                    disabled={currentVariant.stock === 0}
+                  >
+                    {currentVariant.stock > 0 ? 'Ajouter au Panier' : 'Rupture de Stock'}
+                  </button>
+                  <button className="btn btn-outline">
+                    ♡ Ajouter aux Favoris
+                  </button>
+                </div>
+
+                <div className="stock-info">
+                  {currentVariant.stock > 0 ? (
+                    <span className="in-stock">✓ En stock ({currentVariant.stock} disponibles)</span>
+                  ) : (
+                    <span className="out-of-stock">✗ Rupture de stock</span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
+          {/* Tu pourras ajouter ici la logique pour les produits similaires */}
         </div>
-        {/* Tu pourras ajouter ici la logique pour les produits similaires */}
       </div>
-    </div>
+      <ModalAlert open={alertOpen} message={alertMsg} onClose={() => setAlertOpen(false)} />
+    </>
   );
 };
 

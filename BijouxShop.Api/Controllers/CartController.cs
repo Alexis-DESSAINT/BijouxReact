@@ -18,16 +18,27 @@ public class CartController : ControllerBase
     [HttpPost("add")]
     public async Task<IActionResult> AddToCart([FromBody] AddToCartDto dto)
     {
-        // Pour simplifier, on suppose un panier unique (id=1)
-        var panier = await _db.Paniers.Include(p => p.PanierItems).FirstOrDefaultAsync(p => p.Id == 1);
+        var variante = await _db.Variantes.FindAsync(dto.VarianteId);
+        if (variante == null)
+            return NotFound();
+
+        var panier = await _db.Paniers
+            .Include(p => p.PanierItems)
+            .FirstOrDefaultAsync(p => p.Id == 1);
+
         if (panier == null)
         {
-            panier = new Panier { Id = 1, DateCreation = DateTime.Now };
+            panier = new Panier { Id = 1, DateCreation = DateTime.Now, PanierItems = new List<PanierItem>() };
             _db.Paniers.Add(panier);
             await _db.SaveChangesAsync();
         }
 
         var existingItem = panier.PanierItems.FirstOrDefault(i => i.VarianteId == dto.VarianteId);
+        int totalRequested = dto.Quantite + (existingItem?.Quantite ?? 0);
+
+        if (totalRequested > variante.Stock)
+            return BadRequest(new { message = $"Stock insuffisant : il reste {variante.Stock - (existingItem?.Quantite ?? 0)} exemplaire(s) disponible(s)." });
+
         if (existingItem != null)
         {
             existingItem.Quantite += dto.Quantite;
@@ -87,10 +98,44 @@ public class CartController : ControllerBase
         await _db.SaveChangesAsync();
         return Ok();
     }
+
+    [HttpPatch("update/{itemId}")]
+    public async Task<IActionResult> UpdateQuantity(int itemId, [FromBody] UpdateQuantityDto dto)
+    {
+        var item = await _db.PanierItems
+            .Include(i => i.Variante)
+            .FirstOrDefaultAsync(i => i.Id == itemId);
+
+        if (item == null)
+            return NotFound();
+
+        if (item.Variante == null)
+            return BadRequest(new { message = "Variante introuvable." });
+
+        int newQuantity = item.Quantite + dto.Delta;
+
+        // Calcul du stock restant (stock total - quantité déjà dans le panier pour cet item)
+        int stockRestant = item.Variante.Stock - item.Quantite;
+
+        if (newQuantity > item.Variante.Stock)
+            return BadRequest(new { message = $"Stock insuffisant : il reste {stockRestant} exemplaire(s) disponible(s) pour cette variante dans votre panier." });
+
+        if (newQuantity < 1)
+            newQuantity = 1;
+
+        item.Quantite = newQuantity;
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
 }
 
 public class AddToCartDto
 {
     public int VarianteId { get; set; }
     public int Quantite { get; set; }
+}
+
+public class UpdateQuantityDto
+{
+    public int Delta { get; set; }
 }

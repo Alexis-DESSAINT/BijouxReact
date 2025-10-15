@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Layout from './components/Layout/Layout';
@@ -11,16 +11,18 @@ import CartPage from './pages/CartPage/CartPage';
 import './styles/globals.css';
 
 function App() {
+    const [cartCount, setCartCount] = useState(0);
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout cartCount={cartCount} />}>
           <Route index element={<HomePage />} />
           <Route path="products" element={<CategoryPage />} /> {/* <-- Ici */}
-          <Route path="product/:id" element={<ProductPage />} />
+          <Route path="product/:id" element={<ProductPage onCartChange={setCartCount} />} />
           <Route path="articles" element={<ArticlesPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="cart" element={<CartPage />} />
+          <Route path="cart" element={<CartPage onCartChange={setCartCount} />} />
         </Route>
       </Routes>
     </Router>

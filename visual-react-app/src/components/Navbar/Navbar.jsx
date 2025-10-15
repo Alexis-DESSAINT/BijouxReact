@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount] = useState(3);
 
   const categories = [
     'Bagues',
@@ -42,7 +41,7 @@ const Navbar = () => {
           <div className="navbar-right">
             <Link to="/cart" onClick={() => window.scrollTo(0, 0)} className="cart-icon">
               🛒
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+              <span className="cart-badge">{cartCount}</span>
             </Link>
             <Link to="/login" onClick={() => window.scrollTo(0, 0)} className="btn btn-outline">
               Connexion

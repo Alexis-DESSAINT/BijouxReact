@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './CartPage.css';
+import ModalAlert from '../../components/ModalAlert/ModalAlert';
 
-const CartPage = () => {
+const CartPage = ({ onCartChange }) => {
   const [cart, setCart] = useState([]);
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertMsg, setAlertMsg] = useState('');
 
-  useEffect(() => {
+  // Fonction pour charger le panier et mettre à jour le compteur
+  const loadCart = () => {
     fetch('http://localhost:5105/api/cart')
       .then(res => res.json())
       .then(data => {
-        // On adapte les données API au format attendu par le visuel existant
         const items = (data.items || []).map(item => ({
           id: item.id,
           name: item.variante.articleNom,
@@ -20,23 +23,35 @@ const CartPage = () => {
             : 'https://via.placeholder.com/100'
         }));
         setCart(items);
+        if (onCartChange) onCartChange(items.reduce((sum, i) => sum + i.quantity, 0));
       });
+  };
+
+  useEffect(() => {
+    loadCart();
+    // eslint-disable-next-line
   }, []);
 
-  const handleQuantity = (id, delta) => {
-    setCart(cart =>
-      cart.map(item =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
-    // TODO: Appeler l'API pour mettre à jour la quantité côté serveur si besoin
+  const handleQuantity = async (id, delta) => {
+    const response = await fetch(`http://localhost:5105/api/cart/update/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ delta })
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      setAlertMsg(error.message || "Erreur lors de la modification de la quantité.");
+      setAlertOpen(true);
+      return;
+    }
+
+    loadCart();
   };
 
   const handleRemove = async id => {
     await fetch(`http://localhost:5105/api/cart/remove/${id}`, { method: 'DELETE' });
-    setCart(cart => cart.filter(item => item.id !== id));
+    loadCart();
   };
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -77,6 +92,7 @@ const CartPage = () => {
           </button>
         </div>
       )}
+      <ModalAlert open={alertOpen} message={alertMsg} onClose={() => setAlertOpen(false)} />
     </div>
   );
 };
