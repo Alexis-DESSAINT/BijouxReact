@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BijouxShop.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+832f36a0cc1402daf825b0d40dda9f5e3849a2d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc16b84adf718b0aa50911a3e01a4993b3270274")]
 [assembly: System.Reflection.AssemblyProductAttribute("BijouxShop.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BijouxShop.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
